@@ -1,0 +1,39 @@
+﻿@page "/AuthorIndex"
+@using BlazorClient;
+@using BlazorClient.Services;
+@inherits ComponentBase 
+<style>
+    td{
+        border: 1px solid black
+    }
+</style>
+<h3>Author</h3>
+
+<table>
+    @foreach(var auth in authors){
+    <tr>
+         <td class="align-middle"> @auth.author_id</td>
+         <td class="align-middle"> @auth.pseudonym</td>
+         @*<td class="align-middle"> <button @onclick="@(() =>DeleteAuthor(@auth))">Delete</button></td>*@
+    </tr>
+}
+</table>
+
+@*<input type="button" onclick=@InsertNewAuthor value="Insert"/>
+<input type="button" onclick=@EditAuthorInformation value="Edit"/>*@
+@code{
+    [Inject] private IAuthorService AuthorService { get; set; }
+    [Parameter] public int TestComponentParemeter { get; set; }
+    protected IEnumerable<Author> authors { get; set; } = new List<Author>();
+
+         protected override async Task OnInitializedAsync()
+         {  
+          authors = await GetData();
+          await base.OnInitializedAsync();
+         }
+
+         public async Task<IEnumerable<Author>> GetData()
+         {
+            return await AuthorService.GetAuthors();
+         }
+}

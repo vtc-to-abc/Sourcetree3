@@ -1,0 +1,27 @@
+﻿
+@page "/AuthorInsert"
+@using BlazorClient;
+@using BlazorClient.Services;
+@inherits ComponentBase
+
+
+@if (OpenModal)
+{
+    <h3>AuthorInsertModal</h3>
+    
+    <div>
+    <EditForm Model=@newAuthor OnSubmit=@InsertNewData>
+        <DataAnnotationsValidator/>
+        <ValidationSummary/>
+        <div class="form-group">
+            <label for="pseudonym">Pseudonym: </label>
+            <InputText id="pseudonym" @bind-Value="newAuthor.pseudonym"/>
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+
+    </EditForm>
+    </div>
+}

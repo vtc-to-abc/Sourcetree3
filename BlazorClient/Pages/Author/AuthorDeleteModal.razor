@@ -1,0 +1,34 @@
+﻿
+@page "/AuthorDelete"
+@using BlazorClient;
+@using BlazorClient.Services;
+@inherits ComponentBase
+
+
+@if (OpenModal)
+{
+    <h3>AuthorDeleteModal</h3>
+    
+    <div>
+    <EditForm Model=@Auth OnSubmit=@DeleteCurrentData>
+        <DataAnnotationsValidator/>
+        <ValidationSummary/>
+
+        <div class="form-group">
+            <span>Do you want to delete this record?</span>
+        </div>
+        <div class="form-group">
+            <label for="author_id">Author Id: <span>@Auth.author_id</span> </label>
+        </div>
+
+        <div class="form-group">
+            <label for="pseudonym">Pseudonym: <span>@Auth.pseudonym</span></label>
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+
+    </EditForm>
+    </div>
+}

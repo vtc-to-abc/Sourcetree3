@@ -1,0 +1,39 @@
+﻿
+@page "/BookInsert"
+@using BlazorClient;
+@using BlazorClient.Services;
+@inherits ComponentBase
+
+@if (OpenModal)
+{
+    <h3>BookInsertModal</h3>
+    
+    <div>
+    <EditForm Model=@newBook OnSubmit=@InsertNewBook>
+        <DataAnnotationsValidator/>
+        <ValidationSummary/>
+        <div class="form-group">
+            <label for="book_title">Title: </label>
+            <InputText id="book_title" @bind-Value="newBook.book_title"/>
+        </div>
+
+        <div class="form-group">
+            <label for="current_rent">Current Rent: </label>
+            <InputNumber id="current_rent" @bind-Value="newBook.current_rent"/>
+        </div>
+
+        <div class="form-group">
+            <label for="stored_copies">Stored Copies: </label>
+            <InputNumber id="stored_copies" @bind-Value="newBook.stored_copies"/>
+        </div>
+
+
+
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+
+    </EditForm>
+    </div>
+
+}

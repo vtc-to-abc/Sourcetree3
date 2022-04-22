@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\chosen.min.css" />
+    <None Include="wwwroot\images\chosen-sprite%402x.png" />
+    <None Include="wwwroot\images\chosen-sprite.png" />
+    <None Include="wwwroot\scripts\chosen.jquery.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  
+    <PackageReference Include="Blazored.Modal" Version="6.0.1" />
+	  
+    <PackageReference Include="chosen.jquery" Version="1.2.0" />
 	  
     <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
 	  
@@ -14,6 +25,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.2" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="MudBlazor" Version="6.0.9" />
   </ItemGroup>
 
 </Project>

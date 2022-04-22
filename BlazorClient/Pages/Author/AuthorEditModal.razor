@@ -1,0 +1,34 @@
+﻿
+@page "/AuthorEdit"
+@using BlazorClient;
+@using BlazorClient.Services;
+@inherits ComponentBase
+
+
+@if (OpenModal)
+{
+    <h3>AuthorEditModal</h3>
+    
+    <div>
+    <EditForm Model=@Auth OnSubmit=@EditCurrentData>
+        <DataAnnotationsValidator/>
+        <ValidationSummary/>
+
+
+        <div class="form-group">
+            <label for="author_id">Author Id: <span>@Auth.author_id</span> </label>
+        </div>
+
+        <div class="form-group">
+            <label for="pseudonym">Pseudonym: </label>
+            <InputText id="pseudonym"  @bind-Value ="Auth.pseudonym"/>
+
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+
+    </EditForm>
+    </div>
+}

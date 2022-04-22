@@ -1,0 +1,42 @@
+﻿
+@page "/BookDelete"
+@using BlazorClient;
+@using BlazorClient.Services;
+@inherits ComponentBase
+
+
+@if (OpenModal)
+{
+    <h3>AuthorDeleteModal</h3>
+    
+    <div>
+    <EditForm Model=@Book OnSubmit=@DeleteCurrentData>
+        <DataAnnotationsValidator/>
+        <ValidationSummary/>
+
+        <div class="form-group">
+            <span>Do you want to delete this record?</span>
+        </div>
+        <div class="form-group">
+            <label for="book_id">Book Id: <span>@Book.book_id</span> </label>
+        </div>
+
+        <div class="form-group">
+            <label for="book_title">Title: <span>@Book.book_title</span></label>
+        </div>
+        
+        <div class="form-group">
+            <label for="current_rent">Current rent: <span>@Book.current_rent</span></label>
+        </div>
+        
+        <div class="form-group">
+            <label for="stored_copies">Stored Copies: <span>@Book.stored_copies</span></label>
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+
+    </EditForm>
+    </div>
+}

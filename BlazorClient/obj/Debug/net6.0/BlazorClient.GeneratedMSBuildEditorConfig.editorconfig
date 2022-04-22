@@ -22,16 +22,36 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vtcong/source/repos/BlazorClient/BlazorClient/Pages/AuthorBook.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aG9yQm9vay5yYXpvcg==
+[C:/Users/vtcong/source/repos/BlazorClient/BlazorClient/Pages/Author/AuthorDeleteModal.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aG9yXEF1dGhvckRlbGV0ZU1vZGFsLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vtcong/source/repos/BlazorClient/BlazorClient/Pages/AuthorIndex.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aG9ySW5kZXgucmF6b3I=
+[C:/Users/vtcong/source/repos/BlazorClient/BlazorClient/Pages/Author/AuthorEditModal.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aG9yXEF1dGhvckVkaXRNb2RhbC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vtcong/source/repos/BlazorClient/BlazorClient/Pages/BookIndex.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9va0luZGV4LnJhem9y
+[C:/Users/vtcong/source/repos/BlazorClient/BlazorClient/Pages/Author/AuthorIndex.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aG9yXEF1dGhvckluZGV4LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vtcong/source/repos/BlazorClient/BlazorClient/Pages/Author/AuthorInsertModal.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aG9yXEF1dGhvckluc2VydE1vZGFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vtcong/source/repos/BlazorClient/BlazorClient/Pages/Book/BookDeleteModal.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9va1xCb29rRGVsZXRlTW9kYWwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vtcong/source/repos/BlazorClient/BlazorClient/Pages/Book/BookEditModal.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9va1xCb29rRWRpdE1vZGFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vtcong/source/repos/BlazorClient/BlazorClient/Pages/Book/BookIndex.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9va1xCb29rSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vtcong/source/repos/BlazorClient/BlazorClient/Pages/Book/BookInsertModal.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9va1xCb29rSW5zZXJ0TW9kYWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/vtcong/source/repos/BlazorClient/BlazorClient/Pages/Counter.razor]

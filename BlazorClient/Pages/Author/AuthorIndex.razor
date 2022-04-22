@@ -1,0 +1,28 @@
+﻿@page "/AuthorIndex"
+@using BlazorClient;
+@using BlazorClient.Services;
+@inherits ComponentBase 
+<style>
+    td{
+        border: 1px solid black
+    }
+</style>
+<h3>Author</h3>
+
+<table>
+    @foreach(var auth in authors){
+    <tr>
+         <td class="align-middle"> @auth.author_id</td>
+         <td class="align-middle"> @auth.pseudonym</td>
+         <td class="align-middle"> <button @onclick="@(() => {GetCurrrentAuthor(@auth); EditAuthorInformation();} )">Edit</button></td>
+          
+         <td class="align-middle"> <button @onclick="@(() => {GetCurrrentAuthor(@auth); DeleteAuthor();} )">Delete</button></td>
+    </tr>
+}
+</table>
+
+<input type="button" onclick=@InsertNewAuthor value="Insert"/>
+
+<AuthorInsertModal @ref="_refAuthorInsertModal"></AuthorInsertModal>
+<AuthorEditModal @ref="_refAuthorEditModal" Auth=@CurrentAuthor ></AuthorEditModal>
+<AuthorDeleteModal @ref="_refAuthorDeleteModal" Auth=@CurrentAuthor></AuthorDeleteModal>

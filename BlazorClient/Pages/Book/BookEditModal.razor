@@ -1,0 +1,55 @@
+﻿
+@page "/BookEdit"
+@using BlazorClient;
+@using BlazorClient.Services;
+@inherits ComponentBase
+
+
+@if (OpenModal)
+{
+    <h3>AuthorEditModal</h3>
+    
+    <div>
+    <EditForm Model=@Book OnSubmit=@EditCurrentData>
+        <DataAnnotationsValidator/>
+        <ValidationSummary/>
+
+
+        <div class="form-group">
+            <label for="book_id">Book Id: <span>@Book.book_id </span> </label>
+        </div>
+
+        <div class="form-group">
+            <label for="book_title">Title: </label>
+            <InputText id="book_title"  @bind-Value ="Book.book_title"/>
+        </div>
+        
+        <div class="form-group">
+            <label for="current_rent">Current rent: </label>
+            <InputNumber id="current_rent"  @bind-Value ="Book.current_rent"/>
+        </div>
+        
+        <div class="form-group">
+            <label for="stored_copies">Stored Copies: </label>
+            <InputNumber id="stored_copies"  @bind-Value ="Book.stored_copies"/>
+        </div>
+
+        <div class="form-group">
+            <label for="writen_by_author">Authors: </label>
+            <ul>
+                    @foreach(var auth in WritenByAuthors)
+                    {
+                        <li>
+                            <input type="checkbox" id="existed_authors" value="auth.author_id" checked readonly /> @auth.pseudonym
+                        </li>
+                    }
+            </ul>
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+
+    </EditForm>
+    </div>
+}

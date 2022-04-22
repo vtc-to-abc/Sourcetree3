@@ -21,44 +21,60 @@ namespace BlazorServer.Data.Controllers
         public async Task<IActionResult> AuthorIndex()
         {
             authors = await _db.GetAuthor();
-            return new JsonResult(authors); 
+            if (authors != null)
+                return Ok(authors); //new JsonResult(books);
+            else
+                return BadRequest("Bad Request");
         }
 
         [HttpPost(Name ="NewAuthorInsert")]
-        public async Task InsertAuthor([FromBody]AuthorModel author)
+        public async Task<IActionResult> InsertAuthor([FromBody]AuthorModel author)
         {
-            await _db.InsertAuthor(author);
+
+            if (!ModelState.IsValid) // if the [frombody] book is not bindable
+                return BadRequest(ModelState);
+
+            var response = await _db.InsertAuthor(author);
+            return Ok(response);
         }
 
         [HttpPut(Name ="UpdateAuthor")]
-        public async Task UpdateAuthor([FromBody] AuthorModel author)
+        public async Task<IActionResult> UpdateAuthor([FromBody] AuthorModel author)
         {
-            await _db.EditAuthor(author);
+            if (!ModelState.IsValid) // if the [frombody] book is not bindable
+                return BadRequest(ModelState);
+
+            var response = await _db.EditAuthor(author);
+            return Ok(response);
         }
 
         [HttpGet("{id:int}")]
-        public async Task<IActionResult> AuthorDetail([FromRoute] int id)
+        public async Task<IActionResult> AuthorDetail([FromQuery] int id)
         {
             var authorToUpdate = new AuthorModel()
             {
                 author_id = id
             };
-            authors = await _db.SearchAuthor(authorToUpdate);
+            var author = await _db.SearchAuthor(authorToUpdate);
+            if (author != null)
+                return Ok(authors); //new JsonResult(books);
+            else
+                return BadRequest("Bad Request");
 
-            return new JsonResult(authors);
-            
         }
 
 
         [HttpDelete]
-        [Route("{id:int}")]
-        public async Task DeleteAuthor([FromRoute] int id)
+        public async Task<IActionResult> DeleteAuthor([FromQuery] int id)
         {
+            if (!ModelState.IsValid) // if the [frombody] book is not bindable
+                return BadRequest(ModelState);
             var author = new AuthorModel()
             {
                 author_id = id
             };
-           await _db.Delete(author);
+            var response = await _db.Delete(author);
+            return Ok(response);
 
         }
     }

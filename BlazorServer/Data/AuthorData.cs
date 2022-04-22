@@ -10,10 +10,10 @@ namespace BlazorServer.Data
     public interface IAuthorData
     {
         Task<List<AuthorModel>> GetAuthor();
-        Task InsertAuthor(AuthorModel auth);
-        Task EditAuthor(AuthorModel auth);
-        Task<List<AuthorModel>> SearchAuthor(AuthorModel auth);
-        Task Delete(AuthorModel auth);
+        Task<AuthorModel> InsertAuthor(AuthorModel auth);
+        Task<AuthorModel> EditAuthor(AuthorModel auth);
+        Task<AuthorModel> SearchAuthor(AuthorModel auth);
+        Task<AuthorModel> Delete(AuthorModel auth);
     }
     // this shit is basically repository
     public class AuthorData : IAuthorData
@@ -24,34 +24,42 @@ namespace BlazorServer.Data
             _db = db;
         }
 
-        public Task Delete(AuthorModel auth)
+        public async Task<AuthorModel> Delete(AuthorModel auth)
         {
-            string sqlquery = "delete from dbo.author where author_id = @author_id";
-            return _db.SaveData(sqlquery, auth);
+            string sqlQuery = "delete from dbo.author where author_id = @author_id";
+            var deletedAuthor = await SearchAuthor(auth);
+            await _db.SaveData(sqlQuery, auth);
+            return deletedAuthor;
         }
 
-        public Task EditAuthor(AuthorModel auth)
+        public async Task<AuthorModel> EditAuthor(AuthorModel auth)
         {
-            string sqlquery = "update dbo.author set pseudonym = @pseudonym where author_id = @author_id";
-            return _db.SaveData(sqlquery, auth);
+            string sqlQuery = "update dbo.author set pseudonym = @pseudonym where author_id = @author_id";
+            await _db.SaveData(sqlQuery, auth);
+
+            var editedAuthor = await SearchAuthor(auth);
+            return editedAuthor;
         }
 
-        public Task<List<AuthorModel>> GetAuthor()
+        public async Task<List<AuthorModel>> GetAuthor()
         {
-            string sqlquery = "select * from dbo.author";
-            var result = _db.LoadData<AuthorModel, dynamic>(sqlquery, new { });
+            string sqlQuery = "select * from dbo.author";
+            var result = await _db.LoadDataList<AuthorModel, dynamic>(sqlQuery, null);
             return result;
         }
-        public Task InsertAuthor(AuthorModel auth)
+        public async Task<AuthorModel> InsertAuthor(AuthorModel auth)
         {
-            string sqlquery = "insert into dbo.author(pseudonym) values(@pseudonym);";
-            return _db.SaveData(sqlquery, auth);
+            string sqlQuery = "insert into dbo.author(pseudonym) values(@pseudonym);";
+            await _db.SaveData(sqlQuery, auth);
+
+            var insertedAuthor = await SearchAuthor(auth);
+            return insertedAuthor;
         }
 
-        public Task<List<AuthorModel>> SearchAuthor(AuthorModel auth)
+        public async Task<AuthorModel> SearchAuthor(AuthorModel auth)
         {
-            string sqlquery = "select * from dbo.author where author_id = @author_id";
-            var result =  _db.LoadData<AuthorModel, dynamic>(sqlquery,  auth);
+            string sqlQuery = "select * from dbo.author where author_id = @author_id";
+            var result = await _db.LoadData<AuthorModel, dynamic>(sqlQuery,  auth);
             return result;
         }
     }

@@ -9,10 +9,10 @@ namespace BlazorServer.Data
     public interface IBookData
     {
         Task<List<BookModel>> GetBook();
-        Task InsertBook(BookModel auth);
-        Task EditBook(BookModel auth);
-        Task<List<BookModel>> SearchBook(BookModel auth);
-        Task Delete(BookModel auth);
+        Task<BookModel> InsertBook(BookModel auth);
+        Task<BookModel> EditBook(BookModel auth);
+        Task<BookModel> SearchBook(BookModel auth);
+        Task<BookModel> Delete(BookModel auth);
     }
     public class BookData : IBookData
     {
@@ -22,41 +22,53 @@ namespace BlazorServer.Data
             _db = db;
         }
 
-        public Task Delete(BookModel book)
+        public async Task<BookModel> Delete(BookModel book)
         {
-            string sqlquery = "delete from dbo.book where book_id = @book_id";
-            return _db.SaveData(sqlquery, book);
+            string sqlQuery = "delete from dbo.book where book_id = @book_id";
+            var deletedRecord = await SearchBook(book);
+            await _db.SaveData(sqlQuery, book);
+            return deletedRecord;
+
+
         }
 
-        public Task EditBook(BookModel book)
+        public async Task<BookModel> EditBook(BookModel book)
         {
-            string sqlquery = @"update dbo.book 
+            string editsqlQuery = @"update dbo.book 
                                 set book_title = @book_title,
                                     stored_copies = @stored_copies,
                                     current_rent = @current_rent
                                 where book_id = @book_id";
 
-            return _db.SaveData(sqlquery, book);
+            await _db.SaveData(editsqlQuery, book);
+
+            var editedRecord = await SearchBook(book);
+            return editedRecord;
         }
 
-        public Task<List<BookModel>> GetBook()
+        public async Task<List<BookModel>> GetBook()
         {
-            string sqlquery = "select * from dbo.book";
-            return _db.LoadData<BookModel, dynamic>(sqlquery, new { });
+            string sqlQuery = "select * from dbo.book";
+            var result = await _db.LoadDataList<BookModel, dynamic>(sqlQuery, null);
+            return result;
         }
 
-        public Task InsertBook(BookModel book)
+        public async Task<BookModel> InsertBook(BookModel book)
         {
-            string sqlquery = @"insert into dbo.book(book_title, stored_copies, current_rent) 
+            string sqlQuery = @"insert into dbo.book(book_title, stored_copies, current_rent) 
                                 values(@book_title, @stored_copies, @current_rent)";
+            await _db.SaveData(sqlQuery, book);
 
-            return _db.SaveData(sqlquery, book);
+            var insertedRecord = await SearchBook(book);
+            return insertedRecord;
+
         }
 
-        public Task<List<BookModel>> SearchBook(BookModel book)
+        public async Task<BookModel> SearchBook(BookModel book)
         {
-            string sqlquery = "select * from dbo.book where book_id = @book_id";
-            return _db.LoadData<BookModel, dynamic>(sqlquery, book);
+            string sqlQuery = "select * from dbo.book where book_id = @book_id";
+            var result = await _db.LoadData<BookModel, dynamic>(sqlQuery, book);
+            return result;
         }
     }
 }

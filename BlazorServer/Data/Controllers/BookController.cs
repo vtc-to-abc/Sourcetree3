@@ -2,6 +2,7 @@
 using BlazorServer.Data.Models;
 namespace BlazorServer.Data.Controllers
 {
+    // there are 4 api passing types: Header, Path, Query, Request Body
     [ApiController]
     [Route("[controller]")]
     [Produces("application/json")]
@@ -18,47 +19,72 @@ namespace BlazorServer.Data.Controllers
         }
 
         [HttpGet(Name ="BookIndex")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Index()
         {
             books = await _db.GetBook();
-            return new JsonResult(books);
+            if (books != null)
+                return Ok(books); //new JsonResult(books);
+            else
+                return BadRequest("Bad Request");
         }
 
         [HttpPost(Name = "NewBookInsert")]
-        public async Task InsertAuthor([FromBody] BookModel book)
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> InsertBook( [FromBody] BookModel book)// request body
         {
-            await _db.InsertBook(book);
+            if (!ModelState.IsValid) // if the [frombody] book is not bindable
+                return BadRequest(ModelState);
+            
+            var response = await _db.InsertBook(book);
+            return Ok(response); 
         }
 
         [HttpPut(Name = "UpdateBook")]
-        public async Task UpdateAuthor([FromBody] BookModel book)
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> UpdateBook([FromBody] BookModel book)
         {
-            await _db.EditBook(book);
+            if (!ModelState.IsValid) // if the [frombody] book is not bindable
+                return BadRequest(ModelState);
+
+            var response = await _db.EditBook(book);
+            return Ok(response);
         }
 
-        [HttpGet("{id:int}")]
-        public async Task<IActionResult> AuthorDetail([FromRoute] int id)
+        [HttpGet("{id:int}")] // server route passing
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> BookDetail([FromQuery] int id)// path
         {
             var bookToUpdate = new BookModel()
             {
                 book_id = id
             };
-            books = await _db.SearchBook(bookToUpdate);
-
-            return new JsonResult(books);
+            var book = await _db.SearchBook(bookToUpdate);
+            if (book != null)
+                return Ok(book);
+            else return BadRequest("Bad Request");
 
         }
 
 
         [HttpDelete]
-        [Route("{id:int}")]
-        public async Task DeleteAuthor([FromRoute] int id)
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> DeleteBook([FromQuery] int id)
         {
+            if (!ModelState.IsValid) // if the [frombody] book is not bindable
+                return BadRequest(ModelState);
+
             var book = new BookModel()
             {
                 book_id = id
             };
-            await _db.Delete(book);
+            var response = await _db.Delete(book);
+            return Ok(response);
 
         }
     }

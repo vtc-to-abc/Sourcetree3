@@ -27,7 +27,10 @@ namespace BlazorServer.Data.Controllers
                 author_id = aid
             };
             booksbyauthor = await _db.GetBookByAuthor(author);
-            return new JsonResult(booksbyauthor);
+            if (booksbyauthor != null)
+                return Ok(booksbyauthor); //new JsonResult(books);
+            else
+                return BadRequest("Bad Request");
         }
 
         [HttpGet("{bid:int}")]
@@ -40,25 +43,37 @@ namespace BlazorServer.Data.Controllers
                 book_id = bid
             };
             authorsbybook = await _db.GetAuthorByBook(book);
-            return new JsonResult(authorsbybook);
+            if (authorsbybook != null)
+                return Ok(authorsbybook); //new JsonResult(books);
+            else
+                return BadRequest("Bad Request");
         }
 
         [HttpPost(Name = "NewAuthorBookInsert")]
-        public async Task InsertAuthor([FromBody] AuthorBookModel authorbook)
+        public async Task<IActionResult> InsertAuthor([FromBody] AuthorBookModel authorbook)
         {
-            await _db.InsertAuthorBook(authorbook);
+            if (!ModelState.IsValid) // if the [frombody] book is not bindable
+                return BadRequest(ModelState);
+
+            var response = await _db.InsertAuthorBook(authorbook);
+            return Ok(response);
         }
 
         [HttpDelete]
         [Route("{aid:int}/{bid:int}")]
-        public async Task DeleteAuthorBook([FromRoute] int aid, [FromRoute] int bid)
+        public async Task<IActionResult> DeleteAuthorBook([FromRoute] int aid, [FromRoute] int bid)
         {
+            if (!ModelState.IsValid) // if the [frombody] book is not bindable
+                return BadRequest(ModelState);
             var authorbook = new AuthorBookModel()
             {
                 author_id = aid, 
                 book_id = bid
             };
-            await _db.Delete(authorbook);
+
+
+            var response = await _db.Delete(authorbook);
+            return Ok(response);
 
         }
 

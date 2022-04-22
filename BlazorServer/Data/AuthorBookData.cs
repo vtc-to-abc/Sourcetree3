@@ -10,8 +10,10 @@ namespace BlazorServer.Data
     {
         Task<List<AuthorModel>> GetAuthorByBook(BookModel book);
         Task<List<BookModel>> GetBookByAuthor(AuthorModel auth);
-        Task InsertAuthorBook(AuthorBookModel auth);
-        Task Delete(AuthorBookModel auth);
+        Task<AuthorBookModel> InsertAuthorBook(AuthorBookModel auth);
+        Task<AuthorBookModel> Delete(AuthorBookModel auth);
+
+        Task<AuthorBookModel> SearchAuthorBook(AuthorBookModel auth);
     }
     public class AuthorBookData : IAuthorBookData
     {
@@ -20,34 +22,49 @@ namespace BlazorServer.Data
         {
             _db = db;
         }
-        public Task Delete(AuthorBookModel authb)
+        public async Task<AuthorBookModel> Delete(AuthorBookModel authb)
         {
-            string sqlquery = "delete from dbo.author_book where author_id = @author_id and  book_id = @book_id";
-            return _db.SaveData(sqlquery, authb);
+            string sqlQuery = "delete from dbo.author_book where author_id = @author_id and  book_id = @book_id";
+            var result = await SearchAuthorBook(authb);
+            await _db.SaveData(sqlQuery, authb);
+            return result;
         }
 
 
-        public Task<List<AuthorModel>> GetAuthorByBook(BookModel book)
+        public async Task<List<AuthorModel>> GetAuthorByBook(BookModel book)
         {
             int book_id1 = book.book_id;
 
-            string sqlquery = "select * from dbo.author join dbo.author_book on dbo.author.author_id = dbo.author_book.author_id where book_id = @book_id1";
-            var result = _db.LoadData<AuthorModel, dynamic>(sqlquery, new { book_id1 });
+            string sqlQuery = "select * from dbo.author join dbo.author_book on dbo.author.author_id = dbo.author_book.author_id where book_id = @book_id1";
+            var result = await _db.LoadDataList<AuthorModel, dynamic>(sqlQuery, new { book_id1 });
             return result;
         }
 
-        public Task<List<BookModel>> GetBookByAuthor(AuthorModel auth)
+        public async Task<List<BookModel>> GetBookByAuthor(AuthorModel auth)
         {
             int author_id1 = auth.author_id;
-            string sqlquery = "select * from dbo.book join dbo.author_book on dbo.book.book_id = dbo.author_book.book_id where author_id = @author_id1";
-            var result = _db.LoadData<BookModel, dynamic>(sqlquery, new { author_id1 });
+            string sqlQuery = "select * from dbo.book join dbo.author_book on dbo.book.book_id = dbo.author_book.book_id where author_id = @author_id1";
+            var result = await _db.LoadDataList<BookModel, dynamic>(sqlQuery, new { author_id1 });
             return result;
         }
 
-        public Task InsertAuthorBook(AuthorBookModel authb)
+        public async Task<AuthorBookModel> InsertAuthorBook(AuthorBookModel authb)
         {
-            string sqlquery = "insert into dbo.author_book(author_id,book_id) values(@author_id,  @book_id);";
-            return _db.SaveData(sqlquery, authb);
+            string sqlQuery = "insert into dbo.author_book(author_id,book_id) values(@author_id,  @book_id);";
+            await _db.SaveData(sqlQuery, authb);
+            var result = await SearchAuthorBook(authb);
+            return result;
+        }
+
+        public async Task<AuthorBookModel> SearchAuthorBook(AuthorBookModel authb)
+        {
+            int book_id1 = authb.book_id;
+            int author_id1 = authb.author_id;
+            string sqlQuery = "select * from dbo.author_book where book_id = @book_id1 and author_id = @author_id1";
+
+            var result = await _db.LoadData<AuthorBookModel, dynamic>(sqlQuery, new { book_id1, author_id1 });
+            return result;
+
         }
 
     }

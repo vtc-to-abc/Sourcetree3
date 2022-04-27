@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlazorServer.Data
+namespace BlazorServer.Data.Services
 {
     public interface IAuthorData
     {

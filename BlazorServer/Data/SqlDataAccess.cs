@@ -45,7 +45,9 @@ namespace BlazorServer.Data
             using (IDbConnection connection = new SqlConnection(conn))
             {
                 var data = await connection.QueryAsync<T>(sql, parameters);
-                return data.First();
+#pragma warning disable CS8603 // Possible null reference return.
+                return data.FirstOrDefault();
+#pragma warning restore CS8603 // Possible null reference return.
             }
         }
     }

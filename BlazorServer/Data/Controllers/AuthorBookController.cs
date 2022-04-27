@@ -1,18 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using BlazorServer.Data.Models;
+using BlazorServer.Data.Services;
+using Microsoft.AspNetCore.Authorization;
+
 namespace BlazorServer.Data.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]/[action]")]
     [Produces("application/json")]
     public class AuthorBookController : ControllerBase
     {
         private readonly IAuthorBookData _db;
-        private readonly ILogger<AuthorController> _logger;
+        private readonly ILogger<AuthorBookController> _logger;
         private List<AuthorModel> authorsbybook = new();
         private List<BookModel> booksbyauthor = new();
 
-        public AuthorBookController(IAuthorBookData db, ILogger<AuthorController> logger)
+        public AuthorBookController(IAuthorBookData db, ILogger<AuthorBookController> logger)
         {
             _db = db;
             _logger = logger;

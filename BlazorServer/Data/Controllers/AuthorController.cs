@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using BlazorServer.Data.Models;
+using BlazorServer.Data.Services;
+using Microsoft.AspNetCore.Authorization;
+
 namespace BlazorServer.Data.Controllers
 {
-
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     [Produces("application/json")]

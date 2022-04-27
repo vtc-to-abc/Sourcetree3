@@ -1,6 +1,16 @@
 using BlazorServer.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Identity.UI;
+using BlazorServer;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
+using System.Configuration;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using BlazorServer.Data.Services;
+//using static BlazorServer.Data.IRolePermissionData;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,11 +21,34 @@ builder.Services.AddTransient<ISqlDataAccess, SqlDataAccess>();
 builder.Services.AddTransient<IAuthorData, AuthorData>();
 builder.Services.AddTransient<IBookData, BookData>();
 builder.Services.AddTransient<IAuthorBookData, AuthorBookData>();
+builder.Services.AddTransient<IAccountData, AccountData>();
+builder.Services.AddTransient<IPermissionData, PermissionData>();
+builder.Services.AddTransient<IRoleData, RoleData>();
+builder.Services.AddTransient<IRolePermissionData, RolePermissionData>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddControllers().AddNewtonsoftJson();
+
+builder.Services.AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(jwtOptions =>
+    {
+        var key = builder.Configuration.GetValue<string>("JwtConfig:Key");
+        var keyBytes = Encoding.ASCII.GetBytes(key);
+        jwtOptions.SaveToken = true;
+        jwtOptions.TokenValidationParameters = new TokenValidationParameters
+        {
+            IssuerSigningKey = new SymmetricSecurityKey(keyBytes),
+            ValidateLifetime=true,
+            ValidateIssuer=false
+        };
+    });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -47,6 +80,8 @@ app.Use(async (context, next) =>
 app.UseCors(builder => builder.WithOrigins("https://localhost:7025")
                                 .AllowAnyMethod()
                                 .AllowAnyHeader());/* accept all header from https://localhost:7025*/
+
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

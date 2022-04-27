@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Moq;
 using BlazorServer.Data.Models;
-using BlazorServer.Data;
+using BlazorServer.Data.Services;
 using NUnit.Framework;
 using BlazorServer.Data.Controllers;
 using Microsoft.Extensions.Logging;

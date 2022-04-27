@@ -15,11 +15,6 @@ namespace BlazorClient.Services
         {
             this.httpClient = httpClient;
         }
-        public async Task<IEnumerable<BookModel>> GetBooks()
-        {
-            var response = await httpClient.GetFromJsonAsync<List<BookModel>>("/Book");
-            return response;
-        }
         public async Task<IEnumerable<AuthorModel>> GetAuthorsByBook(BookModel book)
         {
             var response = await httpClient.GetFromJsonAsync<List<AuthorModel>>("/AuthorBook/GetAllAuthorByBook/"+ book.book_id);

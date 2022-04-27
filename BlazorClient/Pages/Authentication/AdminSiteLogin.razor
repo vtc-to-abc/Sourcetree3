@@ -1,0 +1,27 @@
+﻿
+@page "/login"
+@using BlazorClient;
+@using BlazorClient.Services;
+@inherits ComponentBase
+
+<h3>Login</h3>
+<EditForm Model=@Acc OnValidSubmit=@Login>
+        <DataAnnotationsValidator/>
+        <ValidationSummary/>
+        <div class="form-group">
+            <label for="username">Username: </label>
+            <InputText id="username" @bind-Value="Acc.account_username"/>
+            <ValidationMessage For="@(()=> Acc.account_username)"/>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Current Rent: </label>
+            <InputText id="password" @bind-Value="Acc.account_password"/>
+            <ValidationMessage For="@(()=> Acc.account_password)"/>
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Login</button>
+        </div>
+
+    </EditForm>

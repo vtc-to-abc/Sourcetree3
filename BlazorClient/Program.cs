@@ -5,12 +5,18 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using System.Net.Http.Headers;
 using MudBlazor.Services;
 using Blazored.Modal;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddMudServices();
 builder.Services.AddBlazoredModal();
+
+builder.Services.AddApiAuthorization();
+
 /// <summary>
 ///    The request-header fields allow the client to pass additional
 ///    information about the request, and about the client itself, to the
@@ -30,7 +36,18 @@ builder.Services.AddScoped(sp => {
 builder.Services.AddTransient<IAuthorService, AuthorService>();
 builder.Services.AddTransient<IBookService, BookService>();
 builder.Services.AddTransient<IAuthorBookService, AuthorBookService>();
+builder.Services.AddTransient<IAccountService, AccountService>();
+builder.Services.AddTransient<IRoleService, RoleService>();
+builder.Services.AddTransient<IPermissionService, PermissionService>();
+builder.Services.AddTransient<IRolePermissionService, RolePermissionService>();
+builder.Services.AddTransient<ILocalStorageService, LocalStorageService>();
+builder.Services.AddTransient<IHttpService, HttpService>();
 
-var app = builder.Build();
 
-await app.RunAsync();
+
+var host = builder.Build();
+
+var accountService = host.Services.GetRequiredService<IAccountService>();
+await accountService.Initialize();
+
+await host.RunAsync();

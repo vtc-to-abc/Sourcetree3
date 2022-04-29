@@ -13,35 +13,35 @@ namespace BlazorClient.Services
     }
     public class BookService : IBookService
     {
-        private readonly HttpClient httpClient;
-        public BookService(HttpClient httpClient)
+        private IHttpService _httpService;
+        public BookService(IHttpService httpService)
         {
-            this.httpClient = httpClient;
+            this._httpService = httpService;
         }
 
         public async Task<IEnumerable<BookModel>> GetBooks()
         {
-            var response = await httpClient.GetFromJsonAsync<List<BookModel>>("/Book");
+            var response = await _httpService.Get<List<BookModel>>("/Book");
             return response;
         }
 
         public async Task InsertBook(BookModel Book)
         {
-            await httpClient.PostAsJsonAsync<BookModel>("/Book", Book);
+            await _httpService.Post<BookModel>("/Book", Book);
         }
         public async Task<IEnumerable<BookModel>> SearchBook(int id)
         {
-            return await httpClient.GetFromJsonAsync<List<BookModel>>("/Book/?id=" + id); // client route-passing receive
+            return await _httpService.Get<List<BookModel>>("/Book/?id=" + id); // client route-passing receive
         }
 
         public async Task EditBook(BookModel Book)
         {
-            await httpClient.PutAsJsonAsync<BookModel>("/Book", Book);
+            await _httpService.Put<BookModel>("/Book", Book);
         }
 
         public async Task DeleteBook(BookModel Book)
         {
-            await httpClient.DeleteAsync("/Book/?id=" + Book.book_id);
+            await _httpService.Delete("/Book/?id=" + Book.book_id);
         }
 
     }

@@ -1,48 +1,48 @@
 ﻿@page "/BookIndex"
 @using BlazorClient;
 @using BlazorClient.Services;
-@inherits ComponentBase 
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@inherits ComponentBase
 <style>
     td{
         border: 1px solid black
     }
 </style>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Demo Chosen jQuery - aduka.asia</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/chosen.min.css">
-</head>
-<h3>Book</h3>
-<body>
-<table>
-    <tr>
-         <td class="col-1"> Id</td>
-         <td class="col-6"> Title</td>
-         <td class="col-1"> Stored Copies</td>
-         <td class="col-1"> Current Rent</td>
-    </tr>
-    @foreach(var book in Books){
-    <tr>
-         <td class="col-1"> @book.book_id</td>
-         <td class="col-6"> @book.book_title</td>
-         <td class="col-1"> @book.stored_copies</td>
-         <td class="col-1"> @book.current_rent</td>
 
-         <button @onclick="@(async () => {await GetCurrrentRelationalAuthor(@book); EditBookInformation();} )">Edit</button>
-         <button @onclick="@(async () => {await GetCurrrentBook(@book); await DeleteBook();} )">Delete</button>
-    </tr>
+@if(CurrentUser.Account.account_role_id == 1){
+        <h3>Book</h3>
+        <body>
+            <table>
+                <tr>
+                    <td class="col-1"> Id</td>
+                    <td class="col-6"> Title</td>
+                    <td class="col-1"> Stored Copies</td>
+                    <td class="col-1"> Current Rent</td>
+                </tr>
+                @foreach(var book in Books)
+                {
+                    <tr>
+                        <td class="col-1"> @book.book_id</td>
+                        <td class="col-6"> @book.book_title</td>
+                        <td class="col-1"> @book.stored_copies</td>
+                        <td class="col-1"> @book.current_rent</td>
 
-}
-</table>
+                        <button @onclick="@(async () => {await GetCurrrentRelationalAuthor(@book); EditBookInformation();} )">Edit</button>
+                        <button @onclick="@(async () => {await GetCurrrentBook(@book); await DeleteBook();} )">Delete</button>
+                    </tr>
 
-<button class="btn btn-success" onclick=@InsertNewBook>Insert</button>
-
+                }
+            </table>
+            <button class="btn btn-success" onclick=@InsertNewBook>Insert</button>
     @*<script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/chosen.jquery.min.js"></script>*@
-<BookInsertModal @ref="_refBookInsertModal"></BookInsertModal>
-<BookEditModal @ref="_refBookEditModal" Book=@CurrentBook WritenByAuthors=@CurrentBookRelationalAuthors></BookEditModal>
-<BookDeleteModal @ref="_refBookDeleteModal" Book=@CurrentBook></BookDeleteModal>
-</body>
+            <BookInsertModal @ref="_refBookInsertModal"></BookInsertModal>
+            <BookEditModal @ref="_refBookEditModal" Book=@CurrentBook WritenByAuthors=@CurrentBookRelationalAuthors></BookEditModal>
+            <BookDeleteModal @ref="_refBookDeleteModal" Book=@CurrentBook></BookDeleteModal>
+    </body>
+}
+else{
+    NavigationManager.NavigateTo("/AuthorIndex");
+}
+

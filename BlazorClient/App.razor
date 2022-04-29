@@ -1,14 +1,13 @@
 ﻿@inject NavigationManager NavigationManager
 
-<Router AppAssembly="@typeof(Program).Assembly">
-    <Found Context="routeData">
-        <BlazorClient.Helpers.AppRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-    </Found>
-    <NotFound>
-        @{ 
-            
-            // redirect to home page if not found
-            NavigationManager.NavigateTo(""); 
-        }
-    </NotFound>
-</Router>
+    <Router AppAssembly="@typeof(Program).Assembly">
+        <Found Context="routeData">
+            <BlazorClient.Helpers.AppRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        </Found>
+        <NotFound>
+            @{
+                NavigationManager.NavigateTo(" ");
+            }
+        </NotFound>
+    </Router>
+

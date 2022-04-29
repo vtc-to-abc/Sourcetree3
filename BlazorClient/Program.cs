@@ -16,6 +16,8 @@ builder.Services.AddMudServices();
 builder.Services.AddBlazoredModal();
 
 builder.Services.AddApiAuthorization();
+builder.Services.AddOptions();
+builder.Services.AddAuthorizationCore();
 
 /// <summary>
 ///    The request-header fields allow the client to pass additional
@@ -30,18 +32,19 @@ builder.Services.AddScoped(sp => {
     httpClient.DefaultRequestHeaders// request header
       .Accept // what server reponse type will this side's request accept.
       .Add(new MediaTypeWithQualityHeaderValue("application/json")); // this side accept "application/json" response type
+        
     return httpClient;
     });
-
-builder.Services.AddTransient<IAuthorService, AuthorService>();
-builder.Services.AddTransient<IBookService, BookService>();
-builder.Services.AddTransient<IAuthorBookService, AuthorBookService>();
-builder.Services.AddTransient<IAccountService, AccountService>();
-builder.Services.AddTransient<IRoleService, RoleService>();
-builder.Services.AddTransient<IPermissionService, PermissionService>();
-builder.Services.AddTransient<IRolePermissionService, RolePermissionService>();
-builder.Services.AddTransient<ILocalStorageService, LocalStorageService>();
-builder.Services.AddTransient<IHttpService, HttpService>();
+// must notice about dependency lifespan
+builder.Services.AddScoped<IAuthorService, AuthorService>();
+builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IAuthorBookService, AuthorBookService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IRoleService, RoleService>();
+builder.Services.AddScoped<IPermissionService, PermissionService>();
+builder.Services.AddScoped<IRolePermissionService, RolePermissionService>();
+builder.Services.AddScoped<ILocalStorageService, LocalStorageService>();
+builder.Services.AddScoped<IHttpService, HttpService>();
 
 
 

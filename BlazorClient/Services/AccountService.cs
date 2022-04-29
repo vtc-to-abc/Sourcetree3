@@ -29,10 +29,15 @@ namespace BlazorClient.Services
         }
         public AccountModel Account { get; private set; }
 
+        public async Task Initialize()
+        {
+
+            Account = await _localStorageService.GetItem<AccountModel>(_userKey);
+        }
         public async Task Login(AccountModel acc)
         {
+            
             Account = await _httpService.Post<AccountModel>("/AdminUser/login", acc);
-            int a = 3;
             await _localStorageService.SetItem(_userKey, Account);
         }
         public async Task<IEnumerable<AccountModel>> GetAccounts()
@@ -60,9 +65,6 @@ namespace BlazorClient.Services
             await _httpService.Delete("/Account/?username=" + account.account_username);
         }
 
-        public async Task Initialize()
-        {
-            Account = await _localStorageService.GetItem<AccountModel>(_userKey);
-        }
+
     }
 }

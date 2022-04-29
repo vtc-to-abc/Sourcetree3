@@ -9,6 +9,8 @@ namespace BlazorClient.Pages.Book
         [Inject] private IBookService BookService { get; set; }
         [Inject] private IAuthorService AuthorService { get; set; }
         [Inject] private IAuthorBookService AuthorBookService { get; set; }
+        [Inject] private IAccountService CurrentUser { get; set; }
+        [Inject] private NavigationManager NavigationManager { get; set; }
         [Inject] IJSRuntime JS { get; set; }
 
         protected IEnumerable<BookModel> Books { get; set; } = new List<BookModel>();
@@ -19,7 +21,6 @@ namespace BlazorClient.Pages.Book
 
         private BookModel CurrentBook;
         private IEnumerable<AuthorModel> CurrentBookRelationalAuthors { get; set; } = new List<AuthorModel>();
-
 
         public async Task GetCurrrentBook(BookModel book)
         {

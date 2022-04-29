@@ -1,0 +1,237 @@
+﻿++Solution 'BlazorClient' ‎(1 of 1 project)
+i:{00000000-0000-0000-0000-000000000000}:BlazorClient.sln
+++BlazorClient
+i:{00000000-0000-0000-0000-000000000000}:BlazorClient
+++Connected Services 
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:>2503
+++Dependencies
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:>2502
+++Analyzers
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:analyzers
+++ILLink.CodeFixProvider
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\program files\dotnet\sdk\6.0.200\sdks\microsoft.net.sdk\analyzers\illink.codefixprovider.dll
+++ILLink.RoslynAnalyzer
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\program files\dotnet\sdk\6.0.200\sdks\microsoft.net.sdk\analyzers\illink.roslynanalyzer.dll
+++Microsoft.AspNetCore.Components.Analyzers
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\.nuget\packages\microsoft.aspnetcore.components.analyzers\6.0.4\analyzers\dotnet\cs\microsoft.aspnetcore.components.analyzers.dll
+++Microsoft.AspNetCore.Razor.SourceGenerator.Tooling.Internal
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\program files\dotnet\sdk\6.0.200\sdks\microsoft.net.sdk.razor\source-generators\microsoft.aspnetcore.razor.sourcegenerator.tooling.internal.dll
+++Microsoft.CodeAnalysis.CSharp.NetAnalyzers
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\program files\dotnet\sdk\6.0.200\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+++Microsoft.CodeAnalysis.NetAnalyzers
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\program files\dotnet\sdk\6.0.200\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+++Microsoft.Extensions.Logging.Generators
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\.nuget\packages\microsoft.extensions.logging.abstractions\6.0.1\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
+++Microsoft.NET.Sdk.Razor.SourceGenerators
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\program files\dotnet\sdk\6.0.200\sdks\microsoft.net.sdk.razor\source-generators\microsoft.net.sdk.razor.sourcegenerators.dll
+++System.Text.Json.SourceGeneration
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.2\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+++Frameworks
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:frameworks
+++Packages
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:packages
+++Properties
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\properties\
+++launchSettings.json
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\properties\launchsettings.json
+++wwwroot
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\
+++css
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\css\
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\css\open-iconic\font\css\
+++bootstrap
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\css\bootstrap\
+++open-iconic
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\css\open-iconic\
+++app.css
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\css\app.css
+++chosen.min.css
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\css\chosen.min.css
+++images
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\images\
+++chosen-sprite.png
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\images\chosen-sprite.png
+++chosen-sprite@2x.png
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\images\chosen-sprite@2x.png
+++sample-data
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\sample-data\
+++weather.json
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\sample-data\weather.json
+++scripts
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\scripts\
+++chosen.jquery.min.js
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\scripts\chosen.jquery.min.js
+++testinterop.js
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\scripts\testinterop.js
+++favicon.ico
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\favicon.ico
+++icon-192.png
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\icon-192.png
+++index.html
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\index.html
+++Helpers
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\helpers\
+++AppRouteView.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\helpers\approuteview.cs
+++ExtensionMethods.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\helpers\extensionmethods.cs
+++StringConverter.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\helpers\stringconverter.cs
+++Models
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\models\
+++AccountModel.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\models\accountmodel.cs
+++AuthorBookModel.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\models\authorbookmodel.cs
+++AuthorModel.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\models\authormodel.cs
+++BookModel.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\models\bookmodel.cs
+++PermissionModel.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\models\permissionmodel.cs
+++RoleModel.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\models\rolemodel.cs
+++RolePermissionModel.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\models\rolepermissionmodel.cs
+++Pages
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\
+++Authentication
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\authentication\
+++AdminSiteLogin.razor
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\authentication\adminsitelogin.razor
+++AdminSiteLogin.razor.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\authentication\adminsitelogin.razor.cs
+++Author
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\author\
+++AuthorDeleteModal.razor
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\author\authordeletemodal.razor
+++AuthorEditModal.razor
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\author\authoreditmodal.razor
+++AuthorIndex.razor
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\author\authorindex.razor
+++AuthorIndex.razor.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\author\authorindex.razor.cs
+++AuthorInsertModal.razor
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\author\authorinsertmodal.razor
+++Book
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\book\
+++BookDeleteModal.razor
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\book\bookdeletemodal.razor
+++BookEditModal.razor
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\book\bookeditmodal.razor
+++BookIndex.razor
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\book\bookindex.razor
+++BookIndex.razor.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\book\bookindex.razor.cs
+++BookInsertModal.razor
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\book\bookinsertmodal.razor
+++Counter.razor
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\counter.razor
+++FetchData.razor
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\fetchdata.razor
+++Index.razor
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\index.razor
+++Services
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\services\
+++AccountService.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\services\accountservice.cs
+++AuthorBookService.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\services\authorbookservice.cs
+++AuthorService.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\services\authorservice.cs
+++BookService.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\services\bookservice.cs
+++HttpServices.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\services\httpservices.cs
+++LocalStorageService.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\services\localstorageservice.cs
+++PermissionService.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\services\permissionservice.cs
+++RolePermissionService.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\services\rolepermissionservice.cs
+++RoleService.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\services\roleservice.cs
+++Shared
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\shared\
+++MainLayout.razor
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\shared\mainlayout.razor
+++NavMenu.razor
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\shared\navmenu.razor
+++SurveyPrompt.razor
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\shared\surveyprompt.razor
+++_Imports.razor
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\_imports.razor
+++App.razor
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\app.razor
+++Program.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\program.cs
+++No service dependencies discovered
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:>2504
+++Microsoft.NETCore.App
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\microsoft.netcore.app
+++Blazored.Modal (6.0.1)
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:>2526
+++chosen.jquery (1.2.0)
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:>2522
+++Microsoft.AspNet.Mvc (5.2.7)
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:>2523
+++Microsoft.AspNetCore.Authentication.Cookies (2.2.0)
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:>2527
+++Microsoft.AspNetCore.Authorization (6.0.4)
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:>2519
+++Microsoft.AspNetCore.Components.WebAssembly (6.0.2)
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:>2518
+++Microsoft.AspNetCore.Components.WebAssembly.Authentication (6.0.4)
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:>2525
+++Microsoft.AspNetCore.Components.WebAssembly.DevServer (6.0.2)
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:>2529
+++Microsoft.AspNetCore.Mvc.Abstractions (2.2.0)
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:>2524
+++Microsoft.AspNetCore.Mvc.Core (2.2.5)
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:>2528
+++Microsoft.Extensions.Http (6.0.0)
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:>2520
+++MudBlazor (6.0.9)
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:>2521
+++bootstrap.min.css
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\css\bootstrap\bootstrap.min.css
+++font
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\css\open-iconic\font\
+++FONT-LICENSE
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\css\open-iconic\font-license
+++ICON-LICENSE
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\css\open-iconic\icon-license
+++README.md
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\css\open-iconic\readme.md
+++AuthorDeleteModal.razor.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\author\authordeletemodal.razor.cs
+++AuthorEditModal.razor.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\author\authoreditmodal.razor.cs
+++AuthorInsertModal.razor.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\author\authorinsertmodal.razor.cs
+++BookDeleteModal.razor.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\book\bookdeletemodal.razor.cs
+++BookEditModal.razor.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\book\bookeditmodal.razor.cs
+++BookInsertModal.razor.cs
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\pages\book\bookinsertmodal.razor.cs
+++MainLayout.razor.css
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\shared\mainlayout.razor.css
+++NavMenu.razor.css
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\shared\navmenu.razor.css
+++bootstrap.min.css.map
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\css\bootstrap\bootstrap.min.css.map
+++fonts
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\css\open-iconic\font\fonts\
+++open-iconic-bootstrap.min.css
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\css\open-iconic\font\css\open-iconic-bootstrap.min.css
+++open-iconic.eot
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\css\open-iconic\font\fonts\open-iconic.eot
+++open-iconic.otf
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\css\open-iconic\font\fonts\open-iconic.otf
+++open-iconic.svg
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\css\open-iconic\font\fonts\open-iconic.svg
+++open-iconic.ttf
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\css\open-iconic\font\fonts\open-iconic.ttf
+++open-iconic.woff
+i:{91299f3c-15be-4a7c-bf6e-6780e63ddc03}:c:\users\vtcong\source\repos\blazorclient\blazorclient\wwwroot\css\open-iconic\font\fonts\open-iconic.woff

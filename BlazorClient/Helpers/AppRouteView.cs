@@ -20,10 +20,10 @@ namespace BlazorClient.Helpers
         {
             // check request acc authorize.
             // if authorize fail or the requesting acc is not correct then redirect back to login page
-
+            var account = AccountService.Account;
             var authorize = Attribute.GetCustomAttribute(RouteData.PageType, typeof(AuthorizeAttribute)) != null;
 
-            if (authorize && AccountService.Account == null)
+            if (authorize && account == null)
             {
                 var returnUrl = WebUtility.UrlEncode(new Uri(NavigationManager.Uri).PathAndQuery);
                 NavigationManager.NavigateTo($"/login?returnUrl={returnUrl}");

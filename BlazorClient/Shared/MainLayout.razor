@@ -16,15 +16,28 @@
     </nav>
 }
 
-<div class="app-container @(LoggedIn ? "bg-light" : "")">
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
 
-    <Alert />
-    @Body
+    <main>
+        <div class="top-row px-4">
+            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
 </div>
 
 @code {
     public bool LoggedIn 
     {
-        get { return AccountService.Account != null; }
+        get 
+        { 
+            return AccountService.Account != null; 
+        }
     }
 }

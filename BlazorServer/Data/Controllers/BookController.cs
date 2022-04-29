@@ -5,7 +5,6 @@ using BlazorServer.Data.Services;
 namespace BlazorServer.Data.Controllers
 {
     // there are 4 api passing types: Header, Path, Query, Request Body
-    [Authorize]
     [ApiController]
     [Route("[controller]")]
     [Produces("application/json")]

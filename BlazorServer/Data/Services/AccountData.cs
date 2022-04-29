@@ -18,7 +18,6 @@ namespace BlazorServer.Data.Services
         Task<AccountModel> Authenticate(AccountModel acc);
         Task<AccountModel> CheckCorrectAccount(AccountModel acc);
         Task<AccountModel> CheckAdminPageAccessibility(AccountModel acc);
-
     }
     // t
     public class AccountData : IAccountData
@@ -30,7 +29,16 @@ namespace BlazorServer.Data.Services
             _db = db;
             _configuration = configuration;
         }
-
+        #region user_authentication_and_jwt_token_uses
+        /// <summary>
+        /// when users sign in with their username and password. the Authenticate will start checking 2 things
+        /// 1. if this user existed in database? if not > deny their access request
+        /// 2. if true, then check if this user have permission to access to what they are requesting? if not then deny their access request
+        /// if true, then generate a unique jwt token(which has specific lifespan) for that specific user.
+        /// after the jwt token's lifespan end, refresh a new token for them, or kick them out, make them login again, fuck them
+        /// </summary>
+        /// <param name="acc"></param>
+        /// <returns></returns>
         public async Task<AccountModel> Authenticate(AccountModel acc)
         {
             var RequestingAccount = await SearchAccount(acc);
@@ -45,12 +53,11 @@ namespace BlazorServer.Data.Services
             if (RequestingAccount != null && RequestingAccountPermission == null)
                 return null;
 
-            var Token =  GenerateJwtToken(RequestingAccount.account_username, RequestingAccount.account_password);
+            var Token =  GenerateJwtToken(RequestingAccount);
             RequestingAccount.Token = Token;
             return RequestingAccount;
         }
-
-        public string GenerateJwtToken(string username, string password)
+        public string GenerateJwtToken(AccountModel acc)
         {
 
             var key = _configuration.GetValue<string>("JwtConfig:Key");
@@ -60,15 +67,17 @@ namespace BlazorServer.Data.Services
             {
                 Subject = new ClaimsIdentity(new List<Claim>()
                 {
-                    new Claim(ClaimTypes.NameIdentifier, username)
+                    new Claim(ClaimTypes.NameIdentifier, acc.account_username),
+                    new Claim(ClaimTypes.Role , acc.account_role_id.ToString()),
                 }),
-                Expires = DateTime.UtcNow.AddMinutes(30),
+                Expires = DateTime.UtcNow.AddDays(30),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(keyBytes), SecurityAlgorithms.HmacSha256Signature)
             };
-
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
+        // after that, await attactation
+        #endregion 
 
         public async Task<AccountModel> CheckAdminPageAccessibility(AccountModel acc)
         {
@@ -126,9 +135,11 @@ namespace BlazorServer.Data.Services
 
         public async Task<AccountModel> SearchAccount(AccountModel acc)
         {
+            
             string sqlQuery = "select * from dbo.account where account_username = @account_username";
             var result = await _db.LoadData<AccountModel, dynamic>(sqlQuery, acc);
             return result;
         }
+
     }
 }

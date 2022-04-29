@@ -10,6 +10,6 @@ namespace BlazorServer.Data.Models
         public string? account_password { get; set; }
         public int account_role_id { get; set; }
 
-        public string Token { get; set; }
+        public string? Token { get; set; }
     }
 }

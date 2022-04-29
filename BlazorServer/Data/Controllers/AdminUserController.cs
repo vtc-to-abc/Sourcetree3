@@ -34,7 +34,7 @@ namespace BlazorServer.Data.Controllers
 
             if (result == null)
             {
-                return Unauthorized();
+                return Unauthorized(new {message="Account is incorrect or dont have access permission"});
             }
             return Ok(result);
             

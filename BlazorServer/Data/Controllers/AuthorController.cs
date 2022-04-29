@@ -5,10 +5,12 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BlazorServer.Data.Controllers
 {
-    [Authorize]
+   
     [ApiController]
     [Route("[controller]")]
     [Produces("application/json")]
+    [Authorize(Policy = "SuperAdmin")]
+
     public class AuthorController:ControllerBase
     {
         private readonly IAuthorData _db;

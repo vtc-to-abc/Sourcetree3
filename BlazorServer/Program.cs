@@ -10,32 +10,40 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using BlazorServer.Data.Services;
+using BlazorServer.Helpers;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
 //using static BlazorServer.Data.IRolePermissionData;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 builder.Services.AddSingleton<WeatherForecastService>();
 
-builder.Services.AddTransient<ISqlDataAccess, SqlDataAccess>();
-builder.Services.AddTransient<IAuthorData, AuthorData>();
-builder.Services.AddTransient<IBookData, BookData>();
-builder.Services.AddTransient<IAuthorBookData, AuthorBookData>();
-builder.Services.AddTransient<IAccountData, AccountData>();
-builder.Services.AddTransient<IPermissionData, PermissionData>();
-builder.Services.AddTransient<IRoleData, RoleData>();
-builder.Services.AddTransient<IRolePermissionData, RolePermissionData>();
+builder.Services.AddScoped<ISqlDataAccess, SqlDataAccess>();
+builder.Services.AddScoped<IAuthorData, AuthorData>();
+builder.Services.AddScoped<IBookData, BookData>();
+builder.Services.AddScoped<IAuthorBookData, AuthorBookData>();
+builder.Services.AddScoped<IAccountData, AccountData>();
+builder.Services.AddScoped<IPermissionData, PermissionData>();
+builder.Services.AddScoped<IRoleData, RoleData>();
+builder.Services.AddScoped<IRolePermissionData, RolePermissionData>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddControllers().AddNewtonsoftJson();
 
+builder.Services.Configure<ApiBehaviorOptions>(options =>  // to avoid return badrequest instantly when validate fail
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
+
 builder.Services.AddAuthentication(options =>
-    {
-        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    })
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
     .AddJwtBearer(jwtOptions =>
     {
         var key = builder.Configuration.GetValue<string>("JwtConfig:Key");
@@ -44,11 +52,24 @@ builder.Services.AddAuthentication(options =>
         jwtOptions.TokenValidationParameters = new TokenValidationParameters
         {
             IssuerSigningKey = new SymmetricSecurityKey(keyBytes),
-            ValidateLifetime=true,
-            ValidateIssuer=false
+            ValidateLifetime = true,
+            ValidateIssuer = false,
+            ValidateAudience = false,
+
+
+
         };
+
+      
     });
 
+
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("SuperAdmin", policy =>
+        policy.RequireClaim(ClaimTypes.Role, 999.ToString()));
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -82,16 +103,17 @@ app.UseCors(builder => builder.WithOrigins("https://localhost:7025")
                                 .AllowAnyHeader());/* accept all header from https://localhost:7025*/
 
 
-app.UseHttpsRedirection();
+app.UseMiddleware<JwtMiddleware>();
 
-app.UseAuthorization();
-
-app.MapControllers();
 
 
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseHttpsRedirection();
 
+app.MapControllers();
 
 app.Run();
